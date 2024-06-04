@@ -1,31 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tracker/components/appbar.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.secondary,
-        title: Text('TrAcKeR', style: GoogleFonts.overpassMono(fontSize: 24, color: Theme.of(context).colorScheme.inversePrimary)),
-        centerTitle: true,
-        // actions: [Icon(themeNotifier.isDark ? Icons.nightlight_round : Icons.wb_sunny)],
-        actions: [
-          IconButton(
-            icon: Padding(
-              padding: const EdgeInsets.only(right: 5),
-              child: Icon(Icons.nightlight_round, color: Theme.of(context).colorScheme.inversePrimary),
-            ),
-            onPressed: () {
-              print('Test');
-            },
-          )
-        ],
-      ),
+      appBar: const AppBarSwitchable(),
       body: Center(
-        child: Text('Sample text', style: GoogleFonts.imperialScript(fontSize: 20, color: Theme.of(context).colorScheme.inversePrimary)),
+        child: Text(
+          'Sample text',
+          style: GoogleFonts.imperialScript(fontSize: 20, color: Theme.of(context).colorScheme.inversePrimary),
+        ),
       ),
     );
   }
