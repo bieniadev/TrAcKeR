@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 final ThemeData lightMode = ThemeData(
   colorScheme: ColorScheme.light(
-    background: const Color.fromARGB(255, 216, 216, 216),
+    background: const Color.fromARGB(255, 219, 219, 219),
     primary: Colors.grey.shade100,
     secondary: Colors.grey.shade200,
     tertiary: Colors.grey.shade300,
     inversePrimary: const Color.fromARGB(255, 80, 79, 79),
-    onPrimary: Colors.green.shade100,
-    onSecondary: Colors.green.shade200,
+    onPrimary: Colors.green.shade500,
+    onSecondary: Colors.green.shade400,
   ),
   actionIconTheme: ActionIconThemeData(
     backButtonIconBuilder: (context) => IconButton(
@@ -35,7 +35,7 @@ final ThemeData darkMode = ThemeData(
     secondary: Colors.grey.shade800,
     tertiary: Colors.grey.shade900,
     inversePrimary: const Color.fromARGB(255, 241, 241, 241),
-    onPrimary: Colors.green.shade400,
+    onPrimary: Colors.green.shade200,
     onSecondary: Colors.green.shade300,
   ),
   actionIconTheme: ActionIconThemeData(

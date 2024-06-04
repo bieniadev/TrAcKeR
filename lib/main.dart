@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tracker/boxes.dart';
+import 'package:tracker/models/expence.dart';
 import 'package:tracker/providers/darkmode.dart';
 import 'package:tracker/screens/home.dart';
 import 'package:tracker/theme.dart';
@@ -12,8 +13,9 @@ void main() async {
   // var path = Directory.current.path;
   // await Hive.initFlutter(path);
   await Hive.initFlutter();
-  boxExpences = await Hive.openBox('Expences');
-  boxIsDarkmode = await Hive.openBox('IsDarkmode');
+  Hive.registerAdapter(ExpenceAdapter());
+  boxExpences = await Hive.openBox<List<dynamic>>('Expences');
+  boxIsDarkmode = await Hive.openBox<bool>('IsDarkmode');
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) => runApp(const ProviderScope(child: App())));
 }
 

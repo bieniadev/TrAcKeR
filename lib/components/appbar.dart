@@ -22,7 +22,7 @@ class _AppBarSwitchableState extends ConsumerState<AppBarSwitchable> {
     _isDarkmode = ref.read(isDarkmodeProvider);
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.secondary,
-      title: Text('TrAcKeR', style: GoogleFonts.overpassMono(fontSize: 24, color: Theme.of(context).colorScheme.inversePrimary)),
+      title: Text('TrAcKeR', style: GoogleFonts.seymourOne(fontSize: 24, color: Theme.of(context).colorScheme.inversePrimary)),
       centerTitle: true,
       actions: [
         IconButton(
