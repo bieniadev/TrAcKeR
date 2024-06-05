@@ -4,8 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:tracker/boxes.dart';
 import 'package:tracker/models/expence.dart';
+import 'package:tracker/providers/darkmode.dart';
 import 'package:tracker/providers/expences_list.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
+import 'package:tracker/theme.dart';
 
 class AddExpenceModal extends ConsumerStatefulWidget {
   const AddExpenceModal({super.key});
@@ -65,7 +67,25 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
       initialDate: _selectedDate,
       firstDate: firstDate,
       lastDate: lastDate,
-      // barrierColor: Colors.red,
+      builder: (context, child) {
+        return Theme(
+          data: ref.read(isDarkmodeProvider) ? darkMode : lightMode,
+          // data: Theme.of(context).copyWith(
+          //   colorScheme: ColorScheme.light(
+          //       // seedColor: Colors.green[200],
+          //       primary: Colors.green.shade500, // header background color
+          //       onPrimary: Colors.black, // header text color
+          //       onSurface: Colors.green, // body text color
+          //       background: Theme.of(context).colorScheme.primary),
+          //   textButtonTheme: TextButtonThemeData(
+          //     style: TextButton.styleFrom(
+          //         // foregroundColor: Colors.red, // button text color
+          //         textStyle: GoogleFonts.josefinSans(color: Colors.green.shade400, fontSize: 20)),
+          //   ),
+          // ),
+          child: child!,
+        );
+      },
     );
 
     if (picked != null && picked != _selectedDate) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final ThemeData lightMode = ThemeData(
   colorScheme: ColorScheme.light(
@@ -26,6 +27,11 @@ final ThemeData lightMode = ThemeData(
           size: 28,
         )),
   ),
+  textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+    foregroundColor: Colors.green.shade500,
+    textStyle: GoogleFonts.josefinSans(color: Colors.green.shade400, fontSize: 20),
+  )),
 );
 
 final ThemeData darkMode = ThemeData(
@@ -54,4 +60,9 @@ final ThemeData darkMode = ThemeData(
           size: 28,
         )),
   ),
+  textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+    foregroundColor: Colors.green.shade200,
+    textStyle: GoogleFonts.josefinSans(color: Colors.green.shade300, fontSize: 20),
+  )),
 );
