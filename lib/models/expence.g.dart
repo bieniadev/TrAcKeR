@@ -17,12 +17,11 @@ class ExpenceAdapter extends TypeAdapter<Expence> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Expence(
-      uuid: fields[0] as String,
       desc: fields[1] as String,
       amount: fields[2] as double,
       category: fields[3] as String,
       creationDate: fields[4] as DateTime,
-    );
+    )..uuid = fields[0] as String;
   }
 
   @override

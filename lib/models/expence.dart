@@ -21,10 +21,9 @@ class Expence extends HiveObject {
   DateTime creationDate;
 
   Expence({
-    required this.uuid,
     required this.desc,
     required this.amount,
     required this.category,
     required this.creationDate,
-  });
+  }) : uuid = const Uuid().v4();
 }

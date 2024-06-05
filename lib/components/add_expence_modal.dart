@@ -43,13 +43,11 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
     if (descController.text.isEmpty) {
       descController.text = 'Nieopisany wydatek';
     }
-    Uuid uuid = const Uuid();
     Expence newExpence = Expence(
       desc: descController.text,
       amount: amount,
       category: categoryController.text,
       creationDate: _selectedDate,
-      uuid: uuid.v4(),
     );
     List<dynamic> oldList = ref.read(expencesListProvider) ?? [];
     List<dynamic> newList = [...oldList, newExpence];
