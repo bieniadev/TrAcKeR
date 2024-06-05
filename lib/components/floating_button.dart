@@ -9,17 +9,19 @@ class FloatingButton extends StatelessWidget {
     void showAddExpenceModal() {
       showModalBottomSheet(
         context: context,
-        // isScrollControlled: true,
+        isScrollControlled: true,
+        // useSafeArea: true,
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(16.0))),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         builder: (context) {
-          return Scaffold(
-            extendBody: false,
-            // key: modelScaffoldKey,
-            resizeToAvoidBottomInset: true,
-            backgroundColor: Theme.of(context).colorScheme.secondary,
-            body: const AddExpenceModal(),
-          );
+          //   return Scaffold(
+          //     extendBody: false,
+          //     // key: modelScaffoldKey,
+          //     // resizeToAvoidBottomInset: true,
+          //     backgroundColor: Theme.of(context).colorScheme.secondary,
+          //     body: const AddExpenceModal(),
+          //   );
+          return const AddExpenceModal();
         },
       );
     }
