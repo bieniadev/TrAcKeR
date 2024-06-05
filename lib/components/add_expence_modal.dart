@@ -169,6 +169,8 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
                     textStyle: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.inversePrimary),
                     searchTextStyle: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.65)),
                     searchDecoration: InputDecoration(
+                      filled: true,
+                      fillColor: Theme.of(context).colorScheme.primary,
                       enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.65))),
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.onPrimary)),
                     ),
