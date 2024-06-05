@@ -17,24 +17,27 @@ class ExpenceAdapter extends TypeAdapter<Expence> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Expence(
-      desc: fields[0] as String,
-      amount: fields[1] as double,
-      category: fields[2] as String,
-      creationDate: fields[3] as DateTime,
+      uuid: fields[0] as String,
+      desc: fields[1] as String,
+      amount: fields[2] as double,
+      category: fields[3] as String,
+      creationDate: fields[4] as DateTime,
     );
   }
 
   @override
   void write(BinaryWriter writer, Expence obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.desc)
+      ..write(obj.uuid)
       ..writeByte(1)
-      ..write(obj.amount)
+      ..write(obj.desc)
       ..writeByte(2)
-      ..write(obj.category)
+      ..write(obj.amount)
       ..writeByte(3)
+      ..write(obj.category)
+      ..writeByte(4)
       ..write(obj.creationDate);
   }
 

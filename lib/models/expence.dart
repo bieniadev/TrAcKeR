@@ -1,22 +1,27 @@
 import 'package:hive/hive.dart';
+import 'package:uuid/uuid.dart';
 
 part 'expence.g.dart';
 
 @HiveType(typeId: 1)
 class Expence extends HiveObject {
   @HiveField(0)
-  String desc;
+  String uuid;
 
   @HiveField(1)
-  double amount;
+  String desc;
 
   @HiveField(2)
-  String category;
+  double amount;
 
   @HiveField(3)
+  String category;
+
+  @HiveField(4)
   DateTime creationDate;
 
   Expence({
+    required this.uuid,
     required this.desc,
     required this.amount,
     required this.category,

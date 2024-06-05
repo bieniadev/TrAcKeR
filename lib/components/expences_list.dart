@@ -43,8 +43,11 @@ class _ExpencesListState extends ConsumerState<ExpencesList> {
         style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14, color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.65)),
         textAlign: TextAlign.center,
       ));
+
       for (var expense in groupedExpenses[date]!) {
-        displayList.add(ExpencesItem(expence: expense));
+        displayList.add(ExpencesItem(
+          expence: expense,
+        ));
       }
     }
     return Expanded(

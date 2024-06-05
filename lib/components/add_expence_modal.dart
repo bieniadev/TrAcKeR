@@ -6,6 +6,7 @@ import 'package:tracker/boxes.dart';
 import 'package:tracker/models/expence.dart';
 import 'package:tracker/providers/expences_list.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
+import 'package:uuid/uuid.dart';
 
 class AddExpenceModal extends ConsumerStatefulWidget {
   const AddExpenceModal({super.key});
@@ -42,11 +43,13 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
     if (descController.text.isEmpty) {
       descController.text = 'Nieopisany wydatek';
     }
+    Uuid uuid = const Uuid();
     Expence newExpence = Expence(
       desc: descController.text,
       amount: amount,
       category: categoryController.text,
       creationDate: _selectedDate,
+      uuid: uuid.v4(),
     );
     List<dynamic> oldList = ref.read(expencesListProvider) ?? [];
     List<dynamic> newList = [...oldList, newExpence];
@@ -65,6 +68,7 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
       initialDate: _selectedDate,
       firstDate: firstDate,
       lastDate: lastDate,
+      // barrierColor: Colors.red,
     );
 
     if (picked != null && picked != _selectedDate) {
