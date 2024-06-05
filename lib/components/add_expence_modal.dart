@@ -6,7 +6,6 @@ import 'package:tracker/boxes.dart';
 import 'package:tracker/models/expence.dart';
 import 'package:tracker/providers/expences_list.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
-import 'package:uuid/uuid.dart';
 
 class AddExpenceModal extends ConsumerStatefulWidget {
   const AddExpenceModal({super.key});
