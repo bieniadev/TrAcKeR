@@ -21,10 +21,28 @@ class Statistics extends ConsumerWidget {
       child: Card(
         color: Theme.of(context).colorScheme.secondary,
         child: Center(
-            child: Text(
-          'SUMA: ${sum}zł',
-          style: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.inversePrimary, fontSize: 20, fontWeight: FontWeight.w500, wordSpacing: 1),
-        )),
+          child: RichText(
+              text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'TOTAL',
+                style: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.8), fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              TextSpan(
+                text: ': ',
+                style: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.8), fontSize: 34, fontWeight: FontWeight.w500),
+              ),
+              TextSpan(
+                text: sum.toStringAsFixed(2),
+                style: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8), fontSize: 20, fontWeight: FontWeight.w500, wordSpacing: 1),
+              ),
+              TextSpan(
+                text: ' zł',
+                style: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.8), fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+            ],
+          )),
+        ),
       ),
     );
   }

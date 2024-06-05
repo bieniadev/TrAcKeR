@@ -20,19 +20,22 @@ class ExpenceAdapter extends TypeAdapter<Expence> {
       desc: fields[0] as String,
       amount: fields[1] as double,
       category: fields[2] as String,
+      creationDate: fields[3] as DateTime,
     );
   }
 
   @override
   void write(BinaryWriter writer, Expence obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.desc)
       ..writeByte(1)
       ..write(obj.amount)
       ..writeByte(2)
-      ..write(obj.category);
+      ..write(obj.category)
+      ..writeByte(3)
+      ..write(obj.creationDate);
   }
 
   @override

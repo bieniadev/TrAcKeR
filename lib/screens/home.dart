@@ -21,7 +21,7 @@ class HomeScreen extends ConsumerWidget {
             children: [
               SizedBox(height: 4),
               Statistics(),
-              SizedBox(height: 10),
+              SizedBox(height: 6),
               ExpencesList(),
             ],
           ),

@@ -3,9 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tracker/models/expence.dart';
 
 class ExpencesItem extends StatelessWidget {
-  const ExpencesItem({super.key, required this.index, required this.expence});
+  const ExpencesItem({super.key, required this.expence});
 
-  final int index;
   final Expence expence;
 
   @override
@@ -31,10 +30,17 @@ class ExpencesItem extends StatelessWidget {
                 ),
               ],
             ),
-            Text(
-              '${expence.amount}zł',
-              style: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.8), fontSize: 18),
-            ),
+            RichText(
+                text: TextSpan(children: [
+              TextSpan(
+                text: expence.amount.toStringAsFixed(2),
+                style: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.8), fontSize: 18),
+              ),
+              TextSpan(
+                text: ' zł',
+                style: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.8), fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+            ])),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:tracker/boxes.dart';
 import 'package:tracker/models/expence.dart';
 import 'package:tracker/providers/expences_list.dart';
@@ -18,6 +19,8 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
   TextEditingController amountController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
   SingleValueDropDownController categoryDropdownController = SingleValueDropDownController();
+  DateTime _selectedDate = DateTime.now();
+
   void _addExpence() {
     double? amount = double.tryParse(amountController.text);
     if (amount == null) {
@@ -39,12 +42,36 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
     if (descController.text.isEmpty) {
       descController.text = 'Nieopisany wydatek';
     }
-    Expence newExpence = Expence(desc: descController.text, amount: amount, category: categoryController.text);
+    Expence newExpence = Expence(
+      desc: descController.text,
+      amount: amount,
+      category: categoryController.text,
+      creationDate: _selectedDate,
+    );
     List<dynamic> oldList = ref.read(expencesListProvider) ?? [];
     List<dynamic> newList = [...oldList, newExpence];
     ref.read(expencesListProvider.notifier).state = newList;
     boxExpences.put(1, newList);
     Navigator.of(context).pop();
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    DateTime today = DateTime.now();
+    DateTime firstDate = DateTime(today.year, 1, 1);
+    DateTime lastDate = DateTime(today.year, 12, 31);
+
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: firstDate,
+      lastDate: lastDate,
+    );
+
+    if (picked != null && picked != _selectedDate) {
+      setState(() {
+        _selectedDate = picked;
+      });
+    }
   }
 
   @override
@@ -64,6 +91,7 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
       padding: const EdgeInsets.all(14),
       child: Column(
         children: [
+          const SizedBox(height: 6),
           Text('Add Expence', style: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.onSecondary, fontSize: 22)),
           const SizedBox(height: 12),
           Row(
@@ -153,7 +181,27 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
               ),
             ],
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 10),
+          GestureDetector(
+            onTap: () => _selectDate(context),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.onPrimary),
+                borderRadius: BorderRadius.circular(12),
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(DateFormat('dd.MM.yyyy').format(_selectedDate), style: GoogleFonts.josefinSans(color: Theme.of(context).colorScheme.onPrimary, fontSize: 18)),
+                  const SizedBox(width: 8),
+                  Icon(Icons.calendar_month_rounded, color: Theme.of(context).colorScheme.onPrimary, size: 22),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
           GestureDetector(
             onTap: _addExpence,
             child: Container(
