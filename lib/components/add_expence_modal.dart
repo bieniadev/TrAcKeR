@@ -7,7 +7,6 @@ import 'package:tracker/models/expence.dart';
 import 'package:tracker/providers/darkmode.dart';
 import 'package:tracker/providers/expences_list.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
-import 'package:tracker/theme.dart';
 
 class AddExpenceModal extends ConsumerStatefulWidget {
   const AddExpenceModal({super.key});
