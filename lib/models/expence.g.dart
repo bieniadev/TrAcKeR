@@ -21,13 +21,14 @@ class ExpenceAdapter extends TypeAdapter<Expence> {
       amount: fields[2] as double,
       category: fields[3] as String,
       creationDate: fields[4] as DateTime,
+      colorValue: fields[5] as int,
     )..uuid = fields[0] as String;
   }
 
   @override
   void write(BinaryWriter writer, Expence obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.uuid)
       ..writeByte(1)
@@ -37,7 +38,9 @@ class ExpenceAdapter extends TypeAdapter<Expence> {
       ..writeByte(3)
       ..write(obj.category)
       ..writeByte(4)
-      ..write(obj.creationDate);
+      ..write(obj.creationDate)
+      ..writeByte(5)
+      ..write(obj.colorValue);
   }
 
   @override

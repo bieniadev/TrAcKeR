@@ -48,10 +48,12 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
       amount: amount,
       category: categoryController.text,
       creationDate: _selectedDate,
+      colorValue: Expence.getColorForCategory(categoryController.text).value,
     );
     List<dynamic> oldList = ref.read(expencesListProvider) ?? [];
     List<dynamic> newList = [...oldList, newExpence];
     ref.read(expencesListProvider.notifier).state = newList;
+
     boxExpences.put(1, newList);
     Navigator.of(context).pop();
   }
@@ -107,6 +109,7 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
   Widget build(BuildContext context) {
     List<Expence> expencesList = ref.read(expencesListProvider).map((dynamicItem) => dynamicItem as Expence).toList();
     List<String> categoryList = expencesList.map((expence) => expence.category).toSet().toList();
+
     return Padding(
       padding: MediaQuery.of(context).viewInsets,
       child: Padding(

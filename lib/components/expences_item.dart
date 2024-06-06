@@ -78,9 +78,18 @@ class ExpencesItem extends ConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Container(
+                width: 25,
+                height: 25,
+                decoration: BoxDecoration(
+                  color: expence.color,
+                  border: Border.all(color: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.85), width: 2),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -94,6 +103,7 @@ class ExpencesItem extends ConsumerWidget {
                   ),
                 ],
               ),
+              const Spacer(),
               RichText(
                   text: TextSpan(children: [
                 TextSpan(

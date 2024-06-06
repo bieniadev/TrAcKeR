@@ -5,6 +5,7 @@ import 'package:tracker/components/appbar.dart';
 import 'package:tracker/components/expences_list.dart';
 import 'package:tracker/components/floating_button.dart';
 import 'package:tracker/components/statistics.dart';
+import 'package:tracker/components/circle_chart.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -21,6 +22,8 @@ class HomeScreen extends ConsumerWidget {
             children: [
               SizedBox(height: 4),
               Statistics(),
+              SizedBox(height: 6),
+              CircleChart(),
               SizedBox(height: 6),
               ExpencesList(),
             ],
