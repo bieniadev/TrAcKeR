@@ -69,20 +69,20 @@ class _AddExpenceModalState extends ConsumerState<AddExpenceModal> {
       lastDate: lastDate,
       builder: (context, child) {
         return Theme(
-          data: ref.read(isDarkmodeProvider) ? darkMode : lightMode,
-          // data: Theme.of(context).copyWith(
-          //   colorScheme: ColorScheme.light(
-          //       // seedColor: Colors.green[200],
-          //       primary: Colors.green.shade500, // header background color
-          //       onPrimary: Colors.black, // header text color
-          //       onSurface: Colors.green, // body text color
-          //       background: Theme.of(context).colorScheme.primary),
-          //   textButtonTheme: TextButtonThemeData(
-          //     style: TextButton.styleFrom(
-          //         // foregroundColor: Colors.red, // button text color
-          //         textStyle: GoogleFonts.josefinSans(color: Colors.green.shade400, fontSize: 20)),
-          //   ),
-          // ),
+          // data: ref.watch(isDarkmodeProvider) ? darkMode : lightMode,
+          data: ref.watch(isDarkmodeProvider)
+              ? Theme.of(context).copyWith(
+                  colorScheme: ColorScheme.dark(primary: Colors.green.shade200, onPrimary: Colors.black, onSurface: Theme.of(context).colorScheme.inversePrimary, background: Colors.black),
+                  textButtonTheme: TextButtonThemeData(
+                    style: TextButton.styleFrom(foregroundColor: Colors.green.shade300, textStyle: GoogleFonts.josefinSans(color: Colors.green.shade300, fontSize: 20)),
+                  ),
+                )
+              : Theme.of(context).copyWith(
+                  colorScheme: ColorScheme.light(primary: Colors.green.shade400, onPrimary: Colors.white, onSurface: Theme.of(context).colorScheme.inversePrimary, background: Colors.white),
+                  textButtonTheme: TextButtonThemeData(
+                    style: TextButton.styleFrom(foregroundColor: Colors.green.shade500, textStyle: GoogleFonts.josefinSans(color: Colors.green.shade500, fontSize: 20)),
+                  ),
+                ),
           child: child!,
         );
       },
