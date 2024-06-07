@@ -20,6 +20,7 @@ dependencies:
   intl: ^0.19.0
   uuid: ^4.4.0
   fl_chart: ^0.68.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -31,7 +32,15 @@ dev_dependencies:
   custom_lint: ^0.6.4
   riverpod_lint: ^2.3.10
 
+  
+flutter_icons:
+  android: ture
+  image_path: "assets/logo.png"
+  adaptive_icon_background: "#66bb6a"
+  adaptive_icon_foreground: "assets/logo_background.png"
+
 flutter:
   uses-material-design: true
 
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/logo.png
